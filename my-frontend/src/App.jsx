@@ -19,12 +19,12 @@ function App() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const data = await response.json(); // Parse JSON response
-      console.log("Fetched medicaments:", data); // Debugging
+      const data = await response.json(); // on attend la réponse en json
+      console.log("Fetched medicaments:", data); 
       setMedicaments(data);
     } catch (error) {
       console.error("Failed to fetch medicaments:", error);
-      setMedicaments([]); // Fallback to empty array on error
+      // setMedicaments([]); 
     }
   };
 
