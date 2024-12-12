@@ -25,7 +25,7 @@ class OrdonnanceController extends AbstractController
         $erreurs = [];
 
         foreach ($lines as $line) {
-            if (preg_match('/^([\w\s\-éèàûîô]+)\s+\(([\d\.]+(?:mg|g|ml|Ul|µg))\):\s+(.+)\s+\[Stock:\s*(\d+)\]$/i', $line, $matches)) {
+            if (preg_match('/^([\w\s\-éèàêûîô]+)\s+\(([\d\.]+(?:mg|g|ml|Ul|µg))\):\s+(.+)\s+\[Stock:\s*(\d+)\]$/i', $line, $matches)) {
                 $nom = trim($matches[1]);
                 $dosage = trim($matches[2]);
                 $instructions = trim($matches[3]);
@@ -72,7 +72,7 @@ class OrdonnanceController extends AbstractController
         $medicaments = $this->em->getRepository(Medicament::class)->findAll();
         $data = [];
         foreach ($medicaments as $medicament) {
-            $stock = $medicament->getStock() == 0 ? '0' : $medicament->getStock();
+            $stock = $medicament->getStock() < 10 ? 'stock insuffisant' : $medicament->getStock();
             $data[] = [
                 'nom' => $medicament->getNom(),
                 'dosage' => $medicament->getDosage(),
