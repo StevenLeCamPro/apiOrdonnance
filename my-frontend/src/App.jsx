@@ -48,7 +48,8 @@ function App() {
             <h3>{medicament.nom}</h3>
             <p><strong>Dosage:</strong> {medicament.dosage}</p>
             <p><strong>Instructions:</strong> {medicament.instructions}</p>
-            <p>{medicament.stock} en stock</p>
+            <p>Stock : {medicament.stock}</p>
+            <p>{medicament.prix} € unité</p>
           </div>
         ))}
       </div>
